@@ -28,7 +28,7 @@ public class HttpConnectionExample {
                     con.getInputStream()));
             String inputLine;
             StringBuffer response = new StringBuffer();
-
+            System.out.println(in);
             while ((inputLine = in.readLine()) != null) {
                 System.out.println(inputLine);
                 response.append(inputLine);

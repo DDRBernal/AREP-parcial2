@@ -25,8 +25,7 @@ public class ServicePalindroma {
         boolean isPalindroma = true;
         contador = wordP.length-1;
         for (int j = 0 ; j< wordP.length-1 ; j++){
-            System.out.println(wordP[j]+" "+newWord[contador]);
-            if (!wordP[j].equals("")){
+            if (!wordP[j].equals(newWord[j])){
                 isPalindroma = false;
             }contador--;
         }

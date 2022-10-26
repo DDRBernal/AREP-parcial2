@@ -5,6 +5,7 @@
 
 package escuelaing.edu.co.arep_parcial2;
 
+import org.eclipse.jetty.util.ajax.JSON;
 import spark.Spark.*;
 
 import static spark.Spark.*;
@@ -19,15 +20,19 @@ public class Arep_parcial2 {
 
     public static void main(String[] args) {
         ServicePalindroma servicePalindroma = new ServicePalindroma();
+        RoundRobin roundRobin = new RoundRobin();
+
         port(getPort());
         staticFileLocation("/files");
-        get("/espalindromo/", (req, res) -> {
-            System.out.println();
-            //boolean response = servicePalindroma.isPalindroma("");
-            System.out.println(req+" "+res);
-            return "hello";
+        get("/espalindromo", "text", (req, res)->{
+            String value = req.queryParams("value");
+            String response = servicePalindroma.isPalindroma(value) ? "Si es palíndromo" : "No es palíndromo";
+            int puerto = roundRobin.calculate();
+            System.out.println(puerto);
+            return "{'operation': 'Palíndromo'," +
+                    "'input': "+value+","
+                    + "'output': "+ response + " }";
         });
-
     }
 
     private static int getPort() {
