@@ -21,7 +21,6 @@ public class Arep_parcial2 {
     public static void main(String[] args) {
         ServicePalindroma servicePalindroma = new ServicePalindroma();
         RoundRobin roundRobin = new RoundRobin();
-
         port(getPort());
         staticFileLocation("/files");
         get("/espalindromo", "text", (req, res)->{

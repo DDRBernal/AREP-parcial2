@@ -18,10 +18,14 @@ public class RoundRobin {
 
     public int calculate(){
         int newPort;
-        if (Math.abs(valuePuerto1.get()-valuePuerto2.get())>=7){
+        if (valuePuerto2.get()>=7){
+            newPort=puerto2;
+            valuePuerto1.set(1);
+        }
+        else if (valuePuerto1.get()>=7){
             newPort = puerto2;
-            valuePuerto2.addAndGet(1);
-        }else{
+            valuePuerto2.set(1);
+        } else{
             newPort = puerto1;
             valuePuerto1.addAndGet(1);
         }
